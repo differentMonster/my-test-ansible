@@ -26,3 +26,16 @@
 #     - include: tasks/brave.yml
 #     - include: tasks/dotfiles.yml
 #     - include: tasks/productivity-tools.yml
+
+- hosts: localhost
+  become: true
+  pre_tasks:
+  - name: Update cache
+    apt:
+     update_cache: true
+    tags:
+    - node
+    - zsh
+  tasks:
+  - include: fem-tasks/zsh.yml
+  - include: fem-tasks/node.yml
